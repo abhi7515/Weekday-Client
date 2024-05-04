@@ -17,6 +17,10 @@ const Dashboard = () => {
   return (
     <div>
       {console.log(getJobs.getDashboardJobsData)}
+      {getJobs.getDashboardJobsData.map((item,index) => 
+        {
+          return (<div>{item?.jdUid}</div>)
+      })}
       <h1>Welcome to the Dashboard</h1>
     </div>
   );
