@@ -5,7 +5,7 @@ const initialState = {
   getDashboardJobsFailure: false,
   getDashboardJobsSuccess: false,
   getDashboardJobsError: [],
-  getDashboardJobsData: {},
+  getDashboardJobsData: [],
 };
 
 const DashboardReducer = (state = initialState, action) => {
@@ -16,7 +16,7 @@ const DashboardReducer = (state = initialState, action) => {
         getDashboardJobsLoading: false,
         getDashboardJobsFailure: false,
         getDashboardJobsSuccess: true,
-        getDashboardJobsData: action.data,
+        getDashboardJobsData:[...state.getDashboardJobsData, ...action.data],
       };
     }
     case types.GET_DASHBOARD_JOBS_FAILURE: {
@@ -28,6 +28,14 @@ const DashboardReducer = (state = initialState, action) => {
         getDashboardJobsSuccess: false,
       };
     }
+    case types.GET_DASHBOARD_JOBS_LOADING: {
+        return {
+          ...state,
+          getDashboardJobsLoading: true,
+          getDashboardJobsFailure: false,
+          getDashboardJobsSuccess: false,
+        };
+      }
 
     default:
       return { ...state };

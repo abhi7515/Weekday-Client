@@ -3,12 +3,12 @@ import Constants from "app/httpRequests/constants";
 import config from "app/httpRequests/config";
 import * as types from "../actionTypes";
 
-export const requestJobs = (requestBody) => (dispatch) => {
-
+export const requestJobs = (limit, offset) => (dispatch) => {
+    dispatch({ type: types.GET_DASHBOARD_JOBS_LOADING });
   // Api Class can directly be used from here making access to get, put, post, delete methods easier
   const requestBody = JSON.stringify({
-      "limit": 10,
-      "offset": 0
+      "limit": limit,
+      "offset": offset
      });     
       Api.post(
         Constants.exportProductionBaseURL() + config.endpoint.jobsData,// base url of environment  + backend specific endpoint
