@@ -30,7 +30,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     handleFilter();
-  }, [filters]);
+  }, [filters,page]);
+  
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -50,7 +51,7 @@ const Dashboard = () => {
         if (filters.roles.length  && !filters.roles.some((role) => role.value.toLowerCase() === job.jobRole.toLowerCase())) {
           return false;
         }
-        if (filters.locations.length  && !filters.locations.some((location) => job.location.toLowerCase().includes(location.value.toLowerCase()))) {
+        if (filters.locations.length  && !filters.locations.some((location) => job.location.toLowerCase() === location.value.toLowerCase())) {
           return false;
         }
         if (filters.experience !== null && (job.minExp > filters.experience || job.maxExp < filters.experience)) {

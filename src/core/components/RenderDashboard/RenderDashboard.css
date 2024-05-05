@@ -8,11 +8,5 @@
     margin-left: 24px;
     margin-right:24px;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    /* grid-template-columns: auto auto; */
-    /* @media ${minMediaQueries.mobileL} {
-      grid-template-columns: auto auto auto;
-    }
-    @media ${minMediaQueries.tablet} {
-      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
-    } */
+    
 }

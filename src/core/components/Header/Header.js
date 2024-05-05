@@ -41,7 +41,7 @@ const Header = ({
     { value: 'hybrid', label: 'hybrid' },
     { value: 'delhi ncr', label: 'delhi ncr' },
     { value: 'mumbai', label: 'mumbai' },
-    { value: 'Bengaluru', label: 'bengaluru' }
+    { value: 'bangalore', label: 'bangalore' }
   ];
   const experience = [
     { value: '1', label: '1' },
@@ -72,7 +72,6 @@ const Header = ({
 
   return (
     <div className="header-container">
-    {console.log("filters",filters)}
       <Select
         closeMenuOnSelect={false}
         components={animatedComponents}
