@@ -10,17 +10,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateFilteredJobs } from "app/redux/actions/dashboardActions";
 
 
-const Header = ({ data }) => {
+const Header = ({
+    data,
+    loading,
+    setLoading,
+    filters,
+    setFilters,
+    handleFilter,
+    handleCompanyNameFilter,
+    handleLocationFilter,
+    handleRoleFilter,
+    handleExperienceFilter,
+    handleSalaryRangeFilter
+ }) => {
   const dispatch = useDispatch();
   const getJobs = useSelector((state) => state.getjobs);
-  const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState({
-    roles: [],
-    locations: [],
-    experience: null,
-    salaryRange: null,
-    companyName: "",
-  });
   const animatedComponents = makeAnimated();
 
   const defaultRoles = [
@@ -65,58 +69,6 @@ const Header = ({ data }) => {
 
   ];
 
-  useEffect(() => {
-    handleFilter();
-  }, [filters]);
-
-  const handleFilter = () => {
-    setLoading(true);
-  
-    if (getJobs.getDashboardJobsData) {
-      const filteredJobs = getJobs.getDashboardJobsData.filter((job) => {
-        if (filters.roles.length  && !filters.roles.some((role) => role.value.toLowerCase() === job.jobRole.toLowerCase())) {
-          return false;
-        }
-        if (filters.locations.length  && !filters.locations.some((location) => job.location.toLowerCase().includes(location.value.toLowerCase()))) {
-          return false;
-        }
-        if (filters.experience !== null && (job.minExp > filters.experience || job.maxExp < filters.experience)) {
-          return false;
-        }
-        if (filters.salaryRange !== null && (job.minJdSalary > filters.salaryRange || job.maxJdSalary < filters.salaryRange)) {
-          return false;
-        }
-        if (filters.companyName !== "" && !job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) {
-          return false;
-        }
-        return true;
-      });
-     console.log("filters array result",filteredJobs)
-      // Dispatch action to update filtered jobs in Redux state
-      dispatch(updateFilteredJobs(filteredJobs));
-      setLoading(false);
-    }
-  };
-
-  const handleRoleFilter = (selectedOptions) => {
-    setFilters({ ...filters, roles: selectedOptions });
-  };
-
-  const handleLocationFilter = (selectedOptions) => {
-    setFilters({ ...filters, locations: selectedOptions });
-  };
-
-  const handleExperienceFilter = (selectedOption) => {
-    setFilters({ ...filters, experience: selectedOption ? parseInt(selectedOption.value) : null });
-  };
-
-  const handleSalaryRangeFilter = (selectedOption) => {
-    setFilters({ ...filters, salaryRange: selectedOption ? parseInt(selectedOption.value) : null });
-  };
-
-  const handleCompanyNameFilter = (event) => {
-    setFilters({ ...filters, companyName: event.target.value });
-  };
 
   return (
     <div className="header-container">
