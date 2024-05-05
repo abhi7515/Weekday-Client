@@ -6,6 +6,7 @@ const initialState = {
   getDashboardJobsSuccess: false,
   getDashboardJobsError: [],
   getDashboardJobsData: [],
+  filteredJobs: [],
 };
 
 const DashboardReducer = (state = initialState, action) => {
@@ -34,6 +35,12 @@ const DashboardReducer = (state = initialState, action) => {
           getDashboardJobsLoading: true,
           getDashboardJobsFailure: false,
           getDashboardJobsSuccess: false,
+        };
+      }
+    case types.UPDATE_FILTERED_JOBS: {
+        return {
+          ...state,
+          filteredJobs: action.filteredJobs, // Update filtered jobs state
         };
       }
 

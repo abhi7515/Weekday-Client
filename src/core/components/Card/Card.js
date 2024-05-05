@@ -12,6 +12,7 @@ const Card = ({ data }) => {
   }
   return (
     <div className="card-container">
+      <div className="badge">⏳ Posted Recently</div>
       <div className="card-header">
         <img src={logoUrl} alt="logo" className="logo" />
         <div className="header-details">

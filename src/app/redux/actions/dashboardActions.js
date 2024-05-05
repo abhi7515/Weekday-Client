@@ -31,3 +31,10 @@ export const requestJobs = (limit, offset) => (dispatch) => {
     }
   );
 };
+
+export const updateFilteredJobs = (filteredJobs) => {
+    return {
+      type: types.UPDATE_FILTERED_JOBS,
+      filteredJobs: filteredJobs,
+    };
+  };
