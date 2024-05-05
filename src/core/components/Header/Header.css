@@ -1,0 +1,19 @@
+.container {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    justify-content: center;
+    margin: 24px 24px;
+  }
+  
+  /* Adjust select width and align text center */
+  .MuiInputBase-root {
+    width: 100%;
+  }
+  
+  /* Adjust Autocomplete width */
+  .MuiAutocomplete-inputRoot {
+    width: 100%;
+    max-width: 300px; /* Set maximum width as needed */
+    min-width: 100%;
+  }

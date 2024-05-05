@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div>
       {console.log(getJobs.getDashboardJobsData,getJobs)}
-      <h1>Welcome to the Dashboard</h1>
+      <h1>WeekDay Dashboard</h1>
       <RenderDashboard data={getJobs?.getDashboardJobsData}  /> 
       {getJobs.getDashboardJobsLoading && <div>Loading...</div>}
       {getJobs.getDashboardJobsFailure && <div>Failed to fetch data.</div>}

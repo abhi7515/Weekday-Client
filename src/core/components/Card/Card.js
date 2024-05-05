@@ -2,20 +2,40 @@ import React from "react";
 import "./Card.css";
 
 const Card = ({ data }) => {
-    const hasEasyApply = data.jobDetailsFromCompany.toLowerCase().includes("easy apply");
+
+  const { companyName, logoUrl, jobRole, location, minSalary, maxSalary, aboutCompany, recruiterName, recruiterProfileLink, roleOverview, jdLink, minExp } = data;
+  const slicedRoleOverview = data?.jobDetailsFromCompany?.slice(0, 300);
+
+  const easyApplyJob = () => {
+    const jobId = data.jdUid;
+    //execute job Easy Apply Logic    
+  }
   return (
-    <div className="card">
-      <img src={data.logoUrl} alt={data.companyName} className="logo" />
-      <div className="details">
-        <h2>{data.companyName}</h2>
-        <p>Job Role: {data.jobRole}</p>
-        <p>Location: {data.location}</p>
-        <p>Experience: {data.minExp} - {data.maxExp} years</p>
-        <p>Salary: ${data.minJdSalary || 'N/A'} - ${data.maxJdSalary}</p>
-        <a href={data.jdLink} target="_blank" rel="noopener noreferrer">Job Link</a>
-        <p>{data.jobDetailsFromCompany}</p>
+    <div className="card-container">
+      <div className="card-header">
+        <img src={logoUrl} alt="logo" className="logo" />
+        <div className="header-details">
+          <h4 >{companyName}</h4>
+          <h2>{jobRole}</h2>
+          <p>{location}</p>
+        </div>
       </div>
-      {hasEasyApply && <button className="button">Easy Apply</button>}
+      <div className="card-body">
+        <p className="salary">Estimated Salary: ${data.minJdSalary || 'N/A'} - ${data.maxJdSalary} USD <span>✅</span></p>
+        <div className="about">
+          <p><strong>About Company:</strong></p>
+          <p>{slicedRoleOverview}</p>
+          <p><a href={recruiterProfileLink}>{recruiterName}</a></p>
+        </div>
+        <div className="apply-link">
+          <a href={jdLink}>View job</a>
+        </div>
+        <div className="exp-info">
+          <h3>Minimum Experience</h3>
+          <h2>{minExp} years</h2>
+        </div>
+      </div>
+      <button className="apply-button" onClick={easyApplyJob}>⚡ Easy Apply</button>
     </div>
   );
 };
