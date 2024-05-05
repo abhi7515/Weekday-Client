@@ -18,7 +18,7 @@ const DashboardReducer = (state = initialState, action) => {
         getDashboardJobsFailure: false,
         getDashboardJobsSuccess: true,
         getDashboardJobsData:[...state.getDashboardJobsData, ...action.data],
-        filteredJobs:[...state.filteredJobs, ...action.data],
+        //filteredJobs:[...state.filteredJobs, ...action.data],
       };
     }
     case types.GET_DASHBOARD_JOBS_FAILURE: {
