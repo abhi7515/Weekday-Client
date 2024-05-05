@@ -16,16 +16,16 @@ const Card = ({ data }) => {
       <div className="card-header">
         <img src={logoUrl} alt="logo" className="logo" />
         <div className="header-details">
-          <h4 >{companyName}</h4>
-          <h2>{jobRole}</h2>
-          <p>{location}</p>
+          <div className="company-name" >{companyName}</div>
+          <div className="role">{jobRole}</div>
+          <div>{location}</div>
         </div>
       </div>
       <div className="card-body">
         <p className="salary">Estimated Salary: ${data.minJdSalary || 'N/A'} - ${data.maxJdSalary} USD <span>✅</span></p>
         <div className="about">
-          <p><strong>About Company:</strong></p>
-          <p>{slicedRoleOverview}</p>
+          <p className="about-company">About Company:</p>
+          <p className="role-overview">{slicedRoleOverview}</p>
           <p><a href={recruiterProfileLink}>{recruiterName}</a></p>
         </div>
         <div className="apply-link">
@@ -37,6 +37,7 @@ const Card = ({ data }) => {
         </div>
       </div>
       <button className="apply-button" onClick={easyApplyJob}>⚡ Easy Apply</button>
+      <button className="referral-button" onClick={() => {}}>Unlock Referral Asks</button>
     </div>
   );
 };

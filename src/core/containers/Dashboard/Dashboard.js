@@ -23,6 +23,7 @@ const Dashboard = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [getJobs.getDashboardJobsLoading, page]);
+
   useEffect(() => {
     dispatch(requestJobs(10, 0)); // Initial fetch
   }
@@ -30,7 +31,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>WeekDay Dashboard</h1>
+      {/* <h1>WeekDay Dashboard</h1> */}
       <RenderDashboard data={getJobs?.filteredJobs.length?getJobs?.filteredJobs:getJobs?.getDashboardJobsData}  /> 
       {/* <RenderDashboard data={getJobs?.getDashboardJobsData}  /> */}
       {getJobs.getDashboardJobsLoading && <div>Loading...</div>}
