@@ -1,0 +1,16 @@
+.container{
+    row-gap: 2rem;
+    column-gap: 2rem;
+    display: grid;
+    place-items: center;
+    overflow: none;
+    min-height: 100v;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    /* grid-template-columns: auto auto; */
+    /* @media ${minMediaQueries.mobileL} {
+      grid-template-columns: auto auto auto;
+    }
+    @media ${minMediaQueries.tablet} {
+      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    } */
+}

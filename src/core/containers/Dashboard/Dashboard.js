@@ -2,6 +2,7 @@ import {React, useState, useEffect} from "react";
 import {requestJobs} from "app/redux/actions/dashboardActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import RenderDashboard from "core/components/RenderDashboard/RenderDashboard";
 
 const Dashboard = () => {
 
@@ -31,15 +32,13 @@ const Dashboard = () => {
     <div>
       {console.log(getJobs.getDashboardJobsData,getJobs)}
       <h1>Welcome to the Dashboard</h1>
-      {getJobs.getDashboardJobsData.map((item, index) => (
-        <div style={{ height: "200px" }} key={index}>
-          {item?.jdUid}
-        </div>
-      ))}
+      <RenderDashboard data={getJobs?.getDashboardJobsData}  /> 
       {getJobs.getDashboardJobsLoading && <div>Loading...</div>}
       {getJobs.getDashboardJobsFailure && <div>Failed to fetch data.</div>}
     </div>
   );
 };
+
+//Dummy Component RenderDashboard to render UI to keep business logic seperate
 
 export default Dashboard;
