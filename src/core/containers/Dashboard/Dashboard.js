@@ -1,14 +1,12 @@
 import {React, useState, useEffect} from "react";
 import {requestJobs} from "app/redux/actions/dashboardActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
 import RenderDashboard from "core/components/RenderDashboard/RenderDashboard";
 import { updateFilteredJobs } from "app/redux/actions/dashboardActions";
 
 const Dashboard = () => {
 
   const dispatch = useDispatch();
-  //const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState({
     roles: [],
@@ -93,7 +91,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <h1>WeekDay Dashboard</h1> */}
       <RenderDashboard 
         data={getJobs?.filteredJobs.length?getJobs?.filteredJobs:getJobs?.getDashboardJobsData}
         loading={loading}
